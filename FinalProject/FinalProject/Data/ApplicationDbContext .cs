@@ -14,7 +14,7 @@ namespace FinalProject.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<Professional> Professionals => Set<Professional>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
-
+        public DbSet<VideoSession> VideoSessions => Set<VideoSession>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -103,6 +103,10 @@ namespace FinalProject.Data
                       .WithMany(p => p.Appointments)
                       .HasForeignKey(a => a.ProfessionalId)
                       .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(v => v.VideoSession)
+                        .WithOne()
+                         .HasForeignKey<VideoSession>(v => v.AppointmentId)
+                        .OnDelete(DeleteBehavior.Cascade);
             });
 
         }

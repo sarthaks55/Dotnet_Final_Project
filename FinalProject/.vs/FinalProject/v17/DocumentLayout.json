@@ -1,61 +1,69 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\",
+  "WorkspaceRootPath": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\dto\\appointmentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\dto\\appointmentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\dto\\createappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\dto\\createappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\finalproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\finalproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\migrations\\20251227132251_createdusers_roles_professionals_appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\migrations\\20251227132251_createdusers_roles_professionals_appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\videosession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\videosession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\professional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\professional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\professional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\professionalspecialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\services\\videosessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\services\\videosessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\hubs\\videosignalhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\hubs\\videosignalhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\finalproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\finalproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\controllers\\videosessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\videosessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\common\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\common\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\interfaces\\ivideosessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\interfaces\\ivideosessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\professionalspecialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\professionalspecialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\models\\appointmentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\models\\appointmentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\models\\appointmentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|e:\\pg-dac\\module 8  (dotnet)\\project\\finalproject\\finalproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|d:\\cdac\\final project\\final cdac project\\dotnet_final_project\\finalproject\\finalproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{EABD9E53-0C2F-4A5F-83C4-1364CCDA1F07}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -66,193 +74,215 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContext .cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Data\\ApplicationDbContext .cs",
+              "RelativeDocumentMoniker": "FinalProject\\Data\\ApplicationDbContext .cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Data\\ApplicationDbContext .cs",
+              "RelativeToolTip": "FinalProject\\Data\\ApplicationDbContext .cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAuwGkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T17:45:16.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AppointmentsController.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Controllers\\AppointmentsController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\AppointmentsController.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Controllers\\AppointmentsController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\AppointmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\Appointment.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Appointment.cs",
+              "RelativeToolTip": "FinalProject\\Models\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:29:59.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AppointmentResponseDto.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\DTO\\AppointmentResponseDto.cs",
-              "RelativeDocumentMoniker": "FinalProject\\DTO\\AppointmentResponseDto.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\DTO\\AppointmentResponseDto.cs",
-              "RelativeToolTip": "FinalProject\\DTO\\AppointmentResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:28:43.519Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreateAppointmentDto.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\DTO\\CreateAppointmentDto.cs",
-              "RelativeDocumentMoniker": "FinalProject\\DTO\\CreateAppointmentDto.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\DTO\\CreateAppointmentDto.cs",
-              "RelativeToolTip": "FinalProject\\DTO\\CreateAppointmentDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:27:46.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20251227132251_CreatedUsers_Roles_Professionals_Appointment.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Migrations\\20251227132251_CreatedUsers_Roles_Professionals_Appointment.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Migrations\\20251227132251_CreatedUsers_Roles_Professionals_Appointment.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Migrations\\20251227132251_CreatedUsers_Roles_Professionals_Appointment.cs",
-              "RelativeToolTip": "FinalProject\\Migrations\\20251227132251_CreatedUsers_Roles_Professionals_Appointment.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:22:52.273Z",
+              "WhenOpened": "2025-12-28T17:45:32.628Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Appointment.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Appointment.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\Appointment.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Appointment.cs",
-              "RelativeToolTip": "FinalProject\\Models\\Appointment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA2AAAAAAAAAA==",
+              "Title": "VideoSessionService.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Services\\VideoSessionService.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Services\\VideoSessionService.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Services\\VideoSessionService.cs",
+              "RelativeToolTip": "FinalProject\\Services\\VideoSessionService.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAuwEAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:10:12.703Z",
+              "WhenOpened": "2025-12-29T19:08:20.855Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Professional.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Professional.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\Professional.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Professional.cs",
-              "RelativeToolTip": "FinalProject\\Models\\Professional.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "VideoSession.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\VideoSession.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\VideoSession.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\VideoSession.cs",
+              "RelativeToolTip": "FinalProject\\Models\\VideoSession.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:06:11.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ProfessionalSpecialization.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\ProfessionalSpecialization.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\ProfessionalSpecialization.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\ProfessionalSpecialization.cs",
-              "RelativeToolTip": "FinalProject\\Models\\ProfessionalSpecialization.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:04:37.453Z",
+              "WhenOpened": "2025-12-29T19:01:15.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Program.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Program.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Program.cs",
-              "RelativeToolTip": "FinalProject\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\User.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\User.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\User.cs",
+              "RelativeToolTip": "FinalProject\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T10:50:53.663Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AppointmentStatus.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\AppointmentStatus.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\AppointmentStatus.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\AppointmentStatus.cs",
-              "RelativeToolTip": "FinalProject\\Models\\AppointmentStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:05:33.035Z",
+              "WhenOpened": "2025-12-29T18:52:20.454Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ApplicationDbContext .cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Data\\ApplicationDbContext .cs",
-              "RelativeDocumentMoniker": "FinalProject\\Data\\ApplicationDbContext .cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Data\\ApplicationDbContext .cs",
-              "RelativeToolTip": "FinalProject\\Data\\ApplicationDbContext .cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAA/AAAAAAAAAA==",
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\Role.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Role.cs",
+              "RelativeToolTip": "FinalProject\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "FinalProject\\Data",
-              "WhenOpened": "2025-12-27T12:01:18.577Z",
+              "WhenOpened": "2025-12-29T18:51:43.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Role.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Role.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\Role.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\Role.cs",
-              "RelativeToolTip": "FinalProject\\Models\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Professional.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Professional.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\Professional.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Professional.cs",
+              "RelativeToolTip": "FinalProject\\Models\\Professional.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T11:25:04.407Z",
+              "WhenOpened": "2025-12-29T18:51:21.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VideoSignalHub.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Hubs\\VideoSignalHub.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Hubs\\VideoSignalHub.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Hubs\\VideoSignalHub.cs",
+              "RelativeToolTip": "FinalProject\\Hubs\\VideoSignalHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T19:11:20.493Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\User.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Models\\User.cs",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\Models\\User.cs",
-              "RelativeToolTip": "FinalProject\\Models\\User.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAmwCgAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T11:36:10.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "FinalProject.csproj",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\FinalProject.csproj",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\FinalProject.csproj",
               "RelativeDocumentMoniker": "FinalProject\\FinalProject.csproj",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\FinalProject.csproj",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\FinalProject.csproj",
               "RelativeToolTip": "FinalProject\\FinalProject.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-27T12:00:41.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-29T19:03:44.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ServiceResult.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Common\\ServiceResult.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\Common\\ServiceResult.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\Common\\ServiceResult.cs",
+              "RelativeToolTip": "FinalProject\\Models\\Common\\ServiceResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T19:05:41.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VideoSessionController.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Controllers\\VideoSessionController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\VideoSessionController.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Controllers\\VideoSessionController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\VideoSessionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T19:07:51.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IVideoSessionService.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Interfaces\\IVideoSessionService.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Interfaces\\IVideoSessionService.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Interfaces\\IVideoSessionService.cs",
+              "RelativeToolTip": "FinalProject\\Interfaces\\IVideoSessionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T19:04:02.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Program.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Program.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Program.cs",
+              "RelativeToolTip": "FinalProject\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T18:52:23.092Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "ProfessionalSpecialization.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\ProfessionalSpecialization.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\ProfessionalSpecialization.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\ProfessionalSpecialization.cs",
+              "RelativeToolTip": "FinalProject\\Models\\ProfessionalSpecialization.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T18:51:35.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppointmentStatus.cs",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\AppointmentStatus.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Models\\AppointmentStatus.cs",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\Models\\AppointmentStatus.cs",
+              "RelativeToolTip": "FinalProject\\Models\\AppointmentStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T18:51:10.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\appsettings.json",
+              "DocumentMoniker": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\appsettings.json",
               "RelativeDocumentMoniker": "FinalProject\\appsettings.json",
-              "ToolTip": "E:\\PG-DAC\\Module 8  (DOTNET)\\Project\\FinalProject\\FinalProject\\appsettings.json",
+              "ToolTip": "D:\\CDAC\\Final Project\\Final CDAC Project\\Dotnet_Final_Project\\FinalProject\\FinalProject\\appsettings.json",
               "RelativeToolTip": "FinalProject\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-27T10:59:59.451Z"
+              "WhenOpened": "2025-12-28T17:45:21.742Z"
             }
           ]
         }
