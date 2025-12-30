@@ -159,3 +159,5 @@ E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\obj\Debug\net8.0\
 E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.pdb
 E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.genruntimeconfig.cache
 E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\obj\Debug\net8.0\ref\FinalProject.dll
+E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\PG-DAC\Module 8  (DOTNET)\Project\FinalProject\FinalProject\bin\Debug\net8.0\BCrypt.Net-Next.dll

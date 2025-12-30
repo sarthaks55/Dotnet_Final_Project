@@ -14,44 +14,37 @@ namespace FinalProject.Models
         [Column("role_id")]
         public int RoleId { get; set; }
 
-        public Role Role { get; set; } = null!;
-
         [Required]
-        [Column("full_name")]
         [MaxLength(100)]
+        [Column("full_name")]
         public string FullName { get; set; } = null!;
 
         [Required]
-        [Column("email")]
         [MaxLength(100)]
+        [Column("email")]
         public string Email { get; set; } = null!;
 
         [Required]
-        [Column("password_hash")]
         [MaxLength(255)]
+        [Column("password_hash")]
         public string PasswordHash { get; set; } = null!;
 
-        [Column("phone")]
         [MaxLength(20)]
+        [Column("phone")]
         public string? Phone { get; set; }
 
         [Column("is_active")]
         public bool IsActive { get; set; } = true;
 
         [Column("created_at", TypeName = "timestamp")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+        [Column("updated_at", TypeName = "timestamp")]
+        public DateTime? UpdatedAt { get; set; }
 
-        // One-to-one
+        // Navigation
+        public Role Role { get; set; } = null!;
         public Professional? Professional { get; set; }
-
-        // One-to-many
         public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-
-
     }
-
 }
-
-
-

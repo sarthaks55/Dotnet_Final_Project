@@ -3,6 +3,7 @@ using System;
 using FinalProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251230105808_created-mood-entries")]
+    partial class createdmoodentries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,35 +71,6 @@ namespace FinalProject.Migrations
                         .IsUnique();
 
                     b.ToTable("appointments");
-                });
-
-            modelBuilder.Entity("FinalProject.Models.DiaryEntry", b =>
-                {
-                    b.Property<long>("DiaryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("diary_id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<string>("EncryptedText")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("encrypted_text");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("user_id");
-
-                    b.HasKey("DiaryId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("diary_entries");
                 });
 
             modelBuilder.Entity("FinalProject.Models.MoodEntry", b =>
@@ -272,17 +246,6 @@ namespace FinalProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Professional");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("FinalProject.Models.DiaryEntry", b =>
-                {
-                    b.HasOne("FinalProject.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });

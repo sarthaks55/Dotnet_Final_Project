@@ -29,16 +29,15 @@ namespace FinalProject.Models
         [Column("status")]
         public AppointmentStatus Status { get; set; } = AppointmentStatus.PENDING;
 
-        [Column("jitsi_room_id")]
         [MaxLength(255)]
+        [Column("jitsi_room_id")]
         public string? JitsiRoomId { get; set; }
 
         [Column("created_at", TypeName = "timestamp")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation
         public User User { get; set; } = null!;
         public Professional Professional { get; set; } = null!;
     }
-
 }
