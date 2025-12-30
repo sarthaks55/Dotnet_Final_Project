@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using FinalProject.Interfaces;
 
-namespace SafeMind.Hubs
+namespace FinalProject.Hubs
 {
     [Authorize]
     public class VideoSignalHub : Hub

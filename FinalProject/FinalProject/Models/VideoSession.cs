@@ -9,11 +9,12 @@ namespace FinalProject.Models
     {
         [Key]
         [Column("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
+        // FK → Appointment.Id (long)
         [Required]
         [Column("appointment_id")]
-        public int AppointmentId { get; set; }
+        public long AppointmentId { get; set; }
 
         [Required]
         [MaxLength(120)]
@@ -31,10 +32,10 @@ namespace FinalProject.Models
         [Column("patient_joined")]
         public bool PatientJoined { get; set; }
 
-        [Column("counselor_joined")]
-        public bool CounselorJoined { get; set; }
+        [Column("professional_joined")]
+        public bool ProfessionalJoined { get; set; }
 
-        [Column("created_at")]
+        [Column("created_at", TypeName = "timestamp")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation

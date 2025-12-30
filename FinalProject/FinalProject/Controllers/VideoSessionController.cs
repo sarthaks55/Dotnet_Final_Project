@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FinalProject.Interfaces;
 
-namespace SafeMind.Controllers
+namespace FinalProject.Controllers
 {
     [ApiController]
     [Route("api/video-sessions")]

@@ -4,3 +4,5 @@
 # Build output
 bin/
 obj/
+
+Migrations/

@@ -8,7 +8,7 @@ using FinalProject.Models.Common;
 using FinalProject.Data;
 
 
-namespace SafeMind.Services
+namespace FinalProject.Services
 {
     public class VideoSessionService : IVideoSessionService
     {
@@ -27,6 +27,21 @@ namespace SafeMind.Services
             if (appointment == null)
                 return ServiceResult.Fail("Appointment not found");
 
+            // 🔑 KEY FIX: check existing session
+            var existingSession = await _db.VideoSessions
+                .FirstOrDefaultAsync(v => v.AppointmentId == appointmentId);
+
+            if (existingSession != null)
+            {
+                return ServiceResult.Ok(new
+                {
+                    RoomToken = existingSession.RoomToken,
+                    existingSession.AllowedFrom,
+                    existingSession.AllowedUntil
+                });
+            }
+
+            // Create only if not exists
             var token = Guid.NewGuid().ToString("N");
 
             var session = new VideoSession
@@ -62,13 +77,13 @@ namespace SafeMind.Services
                 return ServiceResult.Fail("Session not active");
 
             if (userId != session.Appointment.UserId &&
-                userId != session.Appointment.CounselorId)
+                userId != session.Appointment.ProfessionalId)
                 return ServiceResult.Fail("Access denied");
 
             return ServiceResult.Ok();
         }
 
-        public async Task<ServiceResult> MarkJoinedAsync(string roomToken, bool isCounselor)
+        public async Task<ServiceResult> MarkJoinedAsync(string roomToken, bool isProfessional)
         {
             var session = await _db.VideoSessions
                 .FirstOrDefaultAsync(v => v.RoomToken == roomToken);
@@ -76,8 +91,8 @@ namespace SafeMind.Services
             if (session == null)
                 return ServiceResult.Fail("Invalid room");
 
-            if (isCounselor)
-                session.CounselorJoined = true;
+            if (isProfessional)
+                session.ProfessionalJoined = true;
             else
                 session.PatientJoined = true;
 

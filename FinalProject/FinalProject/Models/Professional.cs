@@ -7,8 +7,13 @@ namespace FinalProject.Models
     public class Professional
     {
         [Key]
-        [Column("professional_id")]
-        public long ProfessionalId { get; set; }
+        [Column("id")]
+        public long Id { get; set; }
+
+        // ✅ REQUIRED FK
+        [Required]
+        [Column("user_id")]
+        public long UserId { get; set; }
 
         [Required]
         [Column("specialization")]
