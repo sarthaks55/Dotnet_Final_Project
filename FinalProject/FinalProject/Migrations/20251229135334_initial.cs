@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalProject.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatedUsers_Roles_Professionals_Appointment : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,7 +46,8 @@ namespace FinalProject.Migrations
                     phone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     is_active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true),
-                    created_at = table.Column<DateTime>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
+                    created_at = table.Column<DateTime>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    updated_at = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,7 +74,8 @@ namespace FinalProject.Migrations
                     bio = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     consultation_fee = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    is_verified = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    is_verified = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: false),
+                    created_at = table.Column<DateTime>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
                 },
                 constraints: table =>
                 {
@@ -95,8 +97,8 @@ namespace FinalProject.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     user_id = table.Column<long>(type: "bigint", nullable: false),
                     professional_id = table.Column<long>(type: "bigint", nullable: false),
-                    appointment_date = table.Column<DateOnly>(type: "date", nullable: false),
-                    appointment_time = table.Column<TimeOnly>(type: "time(6)", nullable: false),
+                    appointment_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    appointment_time = table.Column<TimeSpan>(type: "time(6)", nullable: false),
                     status = table.Column<string>(type: "longtext", nullable: false, defaultValue: "PENDING")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     jitsi_room_id = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
@@ -122,9 +124,10 @@ namespace FinalProject.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_appointments_professional_id",
+                name: "IX_appointments_professional_id_appointment_date_appointment_ti~",
                 table: "appointments",
-                column: "professional_id");
+                columns: new[] { "professional_id", "appointment_date", "appointment_time" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_appointments_user_id",
