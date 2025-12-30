@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251227132251_CreatedUsers_Roles_Professionals_Appointment")]
-    partial class CreatedUsers_Roles_Professionals_Appointment
+    [Migration("20251229135334_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,11 +29,11 @@ namespace FinalProject.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("appointment_id");
 
-                    b.Property<DateOnly>("AppointmentDate")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("appointment_date");
 
-                    b.Property<TimeOnly>("AppointmentTime")
+                    b.Property<TimeSpan>("AppointmentTime")
                         .HasColumnType("time(6)")
                         .HasColumnName("appointment_time");
 
@@ -65,9 +65,10 @@ namespace FinalProject.Migrations
 
                     b.HasKey("AppointmentId");
 
-                    b.HasIndex("ProfessionalId");
-
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ProfessionalId", "AppointmentDate", "AppointmentTime")
+                        .IsUnique();
 
                     b.ToTable("appointments");
                 });
@@ -87,12 +88,20 @@ namespace FinalProject.Migrations
                         .HasColumnType("decimal(10,2)")
                         .HasColumnName("consultation_fee");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                     b.Property<int?>("ExperienceYears")
                         .HasColumnType("int")
                         .HasColumnName("experience_years");
 
                     b.Property<bool>("IsVerified")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
                         .HasColumnName("is_verified");
 
                     b.Property<string>("Qualification")
@@ -176,6 +185,10 @@ namespace FinalProject.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int")
                         .HasColumnName("role_id");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("updated_at");
 
                     b.HasKey("UserId");
 
