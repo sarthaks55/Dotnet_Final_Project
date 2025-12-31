@@ -19,6 +19,24 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         )
     )
 );
+// ==========================
+// CORS
+// ==========================
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SafeMindCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "http://localhost:4200"
+            ) // <-- your frontend URLs
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 
 // ==========================
@@ -103,7 +121,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("SafeMindCors");
 app.UseAuthentication();  
 app.UseAuthorization();
 
