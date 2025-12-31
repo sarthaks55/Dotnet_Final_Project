@@ -23,9 +23,9 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        // ===================================================
+       
         // USER: Book appointment
-        // ===================================================
+       
         [HttpPost("book")]
         [Authorize(Roles = "USER")]
         public async Task<IActionResult> BookAppointment(
@@ -83,9 +83,9 @@ namespace FinalProject.Controllers
             });
         }
 
-        // ===================================================
+       
         // USER: View his own appointments
-        // ===================================================
+       
         [HttpGet("my")]
         [Authorize(Roles = "USER")]
         public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetMyAppointments()
@@ -114,9 +114,9 @@ namespace FinalProject.Controllers
             return Ok(appointments);
         }
 
-        // ===================================================
-        // THERAPIST: View own appointments
-        // ===================================================
+       
+        // PROFESSIONAL: View own appointments
+       
         [HttpGet("professional")]
         [Authorize(Roles = "PROFESSIONAL")]
         public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetProfessionalAppointments()
@@ -156,9 +156,9 @@ namespace FinalProject.Controllers
 
 
 
-        // ===================================================
-        // THERAPIST: Confirm appointment
-        // ===================================================
+       
+        // PROFESSIONAL: Confirm appointment
+       
         [HttpPut("{appointmentId}/confirm")]
         [Authorize(Roles = "PROFESSIONAL")]
         public async Task<IActionResult> ConfirmAppointment(long appointmentId)
