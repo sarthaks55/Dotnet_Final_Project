@@ -15,11 +15,11 @@ namespace FinalProject.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<Professional> Professionals => Set<Professional>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
+        public DbSet<VideoSession> VideoSessions => Set<VideoSession>();
         public DbSet<MoodEntry> MoodEntries => Set<MoodEntry>();
         public DbSet<DiaryEntry> DiaryEntries => Set<DiaryEntry>();
         public DbSet<Language> Languages => Set<Language>();
         public DbSet<ProfessionalLanguage> ProfessionalLanguages => Set<ProfessionalLanguage>();
-
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -78,9 +78,10 @@ namespace FinalProject.Data
                       .HasForeignKey(u => u.RoleId)
                       .OnDelete(DeleteBehavior.Restrict);
 
+                // User ↔ Professional (1–1)
                 entity.HasOne(u => u.Professional)
                       .WithOne(p => p.User)
-                      .HasForeignKey<Professional>(p => p.ProfessionalId)
+                      .HasForeignKey<Professional>(p => p.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
@@ -89,7 +90,7 @@ namespace FinalProject.Data
             // ==========================
             modelBuilder.Entity<Professional>(entity =>
             {
-                entity.HasKey(p => p.ProfessionalId);
+                entity.HasKey(p => p.Id);
 
                 entity.Property(p => p.Specialization)
                       .HasConversion<string>()
@@ -110,23 +111,21 @@ namespace FinalProject.Data
             // ==========================
             modelBuilder.Entity<Appointment>(entity =>
             {
-                entity.HasKey(a => a.AppointmentId);
+                entity.HasKey(a => a.Id);
 
                 entity.Property(a => a.Status)
                       .HasConversion<string>()
-                      .HasDefaultValue(AppointmentStatus.PENDING);
+                      .HasDefaultValue(AppointmentStatus.BOOKED);
 
                 entity.Property(a => a.CreatedAt)
-                      .HasColumnType("timestamp") 
+                      .HasColumnType("timestamp")
                       .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                entity.Property(a => a.AppointmentDate)
-                      .HasConversion(new DateOnlyConverter())
+                entity.Property(a => a.StartTime)
                       .IsRequired();
 
-                entity.Property(a => a.AppointmentTime)
-                      .HasConversion(new TimeOnlyConverter())
-                      .IsRequired();
+                entity.Property(a => a.EndTime)
+                      .IsRequired(false);
 
                 entity.HasOne(a => a.User)
                       .WithMany(u => u.Appointments)
@@ -138,16 +137,33 @@ namespace FinalProject.Data
                       .HasForeignKey(a => a.ProfessionalId)
                       .OnDelete(DeleteBehavior.Restrict);
 
-                // Prevent double booking
+                // Prevent same-time double booking
                 entity.HasIndex(a => new
                 {
                     a.ProfessionalId,
-                    a.AppointmentDate,
-                    a.AppointmentTime
-                })
-                .IsUnique();
+                    a.StartTime
+                }).IsUnique();
             });
 
+            // ==========================
+            // VideoSession
+            // ==========================
+            modelBuilder.Entity<VideoSession>(entity =>
+            {
+                entity.HasKey(v => v.Id);
+
+                entity.Property(v => v.CreatedAt)
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                entity.HasOne(v => v.Appointment)
+                      .WithOne(a => a.VideoSession)
+                      .HasForeignKey<VideoSession>(v => v.AppointmentId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(v => v.AppointmentId)
+                      .IsUnique();
+            });
 
             // ==========================
             // MoodEntry
@@ -168,11 +184,9 @@ namespace FinalProject.Data
                       .HasForeignKey(m => m.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
 
-                // One mood entry per day per user
                 entity.HasIndex(m => new { m.UserId, m.CreatedDate })
                       .IsUnique();
             });
-
 
             // ==========================
             // DiaryEntry
@@ -193,6 +207,7 @@ namespace FinalProject.Data
                       .HasForeignKey(d => d.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
+<<<<<<< HEAD
 
 
             // ==========================
@@ -230,6 +245,8 @@ namespace FinalProject.Data
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
+=======
+>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         }
     }
 }

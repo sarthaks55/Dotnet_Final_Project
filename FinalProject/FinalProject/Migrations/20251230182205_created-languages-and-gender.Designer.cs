@@ -11,8 +11,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:FinalProject/FinalProject/Migrations/20251230182205_created-languages-and-gender.Designer.cs
     [Migration("20251230182205_created-languages-and-gender")]
     partial class createdlanguagesandgender
+========
+    [Migration("20251230152720_initial")]
+    partial class initial
+>>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6:FinalProject/FinalProject/Migrations/20251230152720_initial.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,18 +29,23 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Appointment", b =>
                 {
-                    b.Property<long>("AppointmentId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasColumnName("appointment_id");
 
-                    b.Property<DateTime>("AppointmentDate")
+                    b.Property<DateTime?>("CallEndedAt")
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("appointment_date");
+                        .HasColumnName("call_endedAt");
 
-                    b.Property<TimeSpan>("AppointmentTime")
-                        .HasColumnType("time(6)")
-                        .HasColumnName("appointment_time");
+                    b.Property<DateTime?>("CallStartedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("call_startAt");
+
+                    b.Property<string>("CancellationReason")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)")
+                        .HasColumnName("cancellation_reason");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -43,31 +53,34 @@ namespace FinalProject.Migrations
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("JitsiRoomId")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("jitsi_room_id");
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("end_time");
 
                     b.Property<long>("ProfessionalId")
                         .HasColumnType("bigint")
                         .HasColumnName("professional_id");
 
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("start_time");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("longtext")
-                        .HasDefaultValue("PENDING")
+                        .HasDefaultValue("BOOKED")
                         .HasColumnName("status");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint")
                         .HasColumnName("user_id");
 
-                    b.HasKey("AppointmentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("ProfessionalId", "AppointmentDate", "AppointmentTime")
+                    b.HasIndex("ProfessionalId", "StartTime")
                         .IsUnique();
 
                     b.ToTable("appointments");
@@ -156,9 +169,10 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Professional", b =>
                 {
-                    b.Property<long>("ProfessionalId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("professional_id");
+                        .HasColumnName("id");
 
                     b.Property<string>("Bio")
                         .HasColumnType("longtext")
@@ -193,7 +207,14 @@ namespace FinalProject.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("specialization");
 
-                    b.HasKey("ProfessionalId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("professionals");
                 });
@@ -296,6 +317,53 @@ namespace FinalProject.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("FinalProject.Models.VideoSession", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("AllowedFrom")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("allowed_from");
+
+                    b.Property<DateTime>("AllowedUntil")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("allowed_until");
+
+                    b.Property<long>("AppointmentId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("appointment_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<bool>("PatientJoined")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("patient_joined");
+
+                    b.Property<bool>("ProfessionalJoined")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("professional_joined");
+
+                    b.Property<string>("RoomToken")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("room_token");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId")
+                        .IsUnique();
+
+                    b.ToTable("video_sessions");
+                });
+
             modelBuilder.Entity("FinalProject.Models.Appointment", b =>
                 {
                     b.HasOne("FinalProject.Models.Professional", "Professional")
@@ -341,7 +409,7 @@ namespace FinalProject.Migrations
                 {
                     b.HasOne("FinalProject.Models.User", "User")
                         .WithOne("Professional")
-                        .HasForeignKey("FinalProject.Models.Professional", "ProfessionalId")
+                        .HasForeignKey("FinalProject.Models.Professional", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -378,9 +446,26 @@ namespace FinalProject.Migrations
                     b.Navigation("Role");
                 });
 
+<<<<<<<< HEAD:FinalProject/FinalProject/Migrations/20251230182205_created-languages-and-gender.Designer.cs
             modelBuilder.Entity("FinalProject.Models.Language", b =>
                 {
                     b.Navigation("ProfessionalLanguages");
+========
+            modelBuilder.Entity("FinalProject.Models.VideoSession", b =>
+                {
+                    b.HasOne("FinalProject.Models.Appointment", "Appointment")
+                        .WithOne("VideoSession")
+                        .HasForeignKey("FinalProject.Models.VideoSession", "AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.Appointment", b =>
+                {
+                    b.Navigation("VideoSession");
+>>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6:FinalProject/FinalProject/Migrations/20251230152720_initial.Designer.cs
                 });
 
             modelBuilder.Entity("FinalProject.Models.Professional", b =>

@@ -1,4 +1,5 @@
 using FinalProject.Data;
+using FinalProject.Interfaces;
 using FinalProject.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,24 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         )
     )
 );
+// ==========================
+// CORS
+// ==========================
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SafeMindCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "http://localhost:4200"
+            ) // <-- your frontend URLs
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 
 // ==========================
@@ -25,6 +44,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // ==========================
 builder.Services.AddScoped<IEncryptionService, AesEncryptionService>();
 
+
+// Video Session 
+builder.Services.AddScoped<IVideoSessionService, VideoSessionService>();
 
 
 // ==========================
@@ -99,7 +121,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("SafeMindCors");
 app.UseAuthentication();  
 app.UseAuthorization();
 

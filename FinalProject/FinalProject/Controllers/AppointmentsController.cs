@@ -1,19 +1,16 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-
-using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using FinalProject.Data;
 using FinalProject.DTO;
 using FinalProject.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
     [ApiController]
     [Route("api/appointments")]
-    [Authorize] // 🔐 All endpoints require JWT
+    [Authorize]
     public class AppointmentsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -31,7 +28,6 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> BookAppointment(
             [FromBody] CreateAppointmentDto dto)
         {
-            // Get logged-in userId from JWT
             var userId = long.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
@@ -39,7 +35,7 @@ namespace FinalProject.Controllers
             // Check professional exists & verified
             var professional = await _context.Professionals
                 .FirstOrDefaultAsync(p =>
-                    p.ProfessionalId == dto.ProfessionalId &&
+                    p.Id == dto.ProfessionalId &&
                     p.IsVerified
                 );
 
@@ -47,17 +43,13 @@ namespace FinalProject.Controllers
                 return BadRequest("Professional not found or not verified.");
 
             // Prevent booking in the past
-            var appointmentDateTime =
-                dto.AppointmentDate.ToDateTime(dto.AppointmentTime);
-
-            if (appointmentDateTime < DateTime.Now)
+            if (dto.StartTime < DateTime.UtcNow)
                 return BadRequest("Cannot book appointment in the past.");
 
-            // Prevent double booking
+            // Prevent double booking (same professional + same start time)
             bool slotTaken = await _context.Appointments.AnyAsync(a =>
                 a.ProfessionalId == dto.ProfessionalId &&
-                a.AppointmentDate == dto.AppointmentDate &&
-                a.AppointmentTime == dto.AppointmentTime &&
+                a.StartTime == dto.StartTime &&
                 a.Status != AppointmentStatus.CANCELLED
             );
 
@@ -68,9 +60,9 @@ namespace FinalProject.Controllers
             {
                 UserId = userId,
                 ProfessionalId = dto.ProfessionalId,
-                AppointmentDate = dto.AppointmentDate,
-                AppointmentTime = dto.AppointmentTime,
-                Status = AppointmentStatus.PENDING
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime,
+                Status = AppointmentStatus.BOOKED
             };
 
             _context.Appointments.Add(appointment);
@@ -79,16 +71,22 @@ namespace FinalProject.Controllers
             return Ok(new
             {
                 message = "Appointment booked successfully",
-                appointmentId = appointment.AppointmentId
+                appointmentId = appointment.Id
             });
         }
 
+<<<<<<< HEAD
        
         // USER: View his own appointments
        
+=======
+        // ===================================================
+        // USER: View own appointments
+        // ===================================================
+>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpGet("my")]
         [Authorize(Roles = "USER")]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetMyAppointments()
+        public async Task<IActionResult> GetMyAppointments()
         {
             var userId = long.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
@@ -98,15 +96,14 @@ namespace FinalProject.Controllers
                 .Where(a => a.UserId == userId)
                 .Include(a => a.Professional)
                     .ThenInclude(p => p.User)
-                .OrderByDescending(a => a.AppointmentDate)
-                .Select(a => new AppointmentResponseDto
+                .OrderByDescending(a => a.StartTime)
+                .Select(a => new
                 {
-                    AppointmentId = a.AppointmentId,
-                    AppointmentDate = a.AppointmentDate,
-                    AppointmentTime = a.AppointmentTime,
-                    Status = a.Status,
-                    JitsiRoomId = a.JitsiRoomId,
-                    CreatedAt = a.CreatedAt,
+                    a.Id,
+                    a.StartTime,
+                    a.EndTime,
+                    Status = a.Status.ToString(),
+                    a.CreatedAt,
                     ProfessionalName = a.Professional.User.FullName
                 })
                 .ToListAsync();
@@ -114,38 +111,45 @@ namespace FinalProject.Controllers
             return Ok(appointments);
         }
 
+<<<<<<< HEAD
        
         // PROFESSIONAL: View own appointments
        
+=======
+        // ===================================================
+        // PROFESSIONAL: View own appointments
+        // ===================================================
+>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpGet("professional")]
         [Authorize(Roles = "PROFESSIONAL")]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetProfessionalAppointments()
+        public async Task<IActionResult> GetProfessionalAppointments()
         {
-            // Logged-in therapist userId
             var userId = long.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
-
-            // Get professional profile
+            Console.WriteLine("User ID: " + userId);
+            var professionalId = await _context.Professionals
+                .Where(p => p.UserId == userId)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
+            Console.WriteLine("Professional ID: " + professionalId);
             var professional = await _context.Professionals
-                .FirstOrDefaultAsync(p => p.ProfessionalId == userId);
+                .FirstOrDefaultAsync(p => p.Id == professionalId);
 
             if (professional == null)
                 return Unauthorized("Professional profile not found.");
 
             var appointments = await _context.Appointments
-                .Where(a => a.ProfessionalId == professional.ProfessionalId)
+                .Where(a => a.ProfessionalId == professional.Id)
                 .Include(a => a.User)
-                .OrderBy(a => a.AppointmentDate)
-                .ThenBy(a => a.AppointmentTime)
-                .Select(a => new AppointmentResponseDto
+                .OrderBy(a => a.StartTime)
+                .Select(a => new
                 {
-                    AppointmentId = a.AppointmentId,
-                    AppointmentDate = a.AppointmentDate,
-                    AppointmentTime = a.AppointmentTime,
-                    Status = a.Status,
-                    JitsiRoomId = a.JitsiRoomId,
-                    CreatedAt = a.CreatedAt,
+                    a.Id,
+                    a.StartTime,
+                    a.EndTime,
+                    Status = a.Status.ToString(),
+                    a.CreatedAt,
                     UserName = a.User.FullName
                 })
                 .ToListAsync();
@@ -153,60 +157,55 @@ namespace FinalProject.Controllers
             return Ok(appointments);
         }
 
+<<<<<<< HEAD
 
 
 
        
         // PROFESSIONAL: Confirm appointment
        
+=======
+        // ===================================================
+        // PROFESSIONAL: Confirm appointment
+        // ===================================================
+>>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpPut("{appointmentId}/confirm")]
         [Authorize(Roles = "PROFESSIONAL")]
         public async Task<IActionResult> ConfirmAppointment(long appointmentId)
         {
-            // Logged-in therapist userId
-            var therapistUserId = long.Parse(
-                User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value
+            var professionalUserId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
-
-            // Get professional profile
+            var professionalId = await _context.Professionals
+                .Where(p => p.UserId == professionalUserId)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
             var professional = await _context.Professionals
-                .FirstOrDefaultAsync(p => p.ProfessionalId == therapistUserId);
+                .FirstOrDefaultAsync(p => p.Id == professionalId);
 
             if (professional == null)
                 return Unauthorized("Professional profile not found.");
 
-            // Get appointment
             var appointment = await _context.Appointments
-                .FirstOrDefaultAsync(a => a.AppointmentId == appointmentId);
+                .FirstOrDefaultAsync(a => a.Id == appointmentId);
 
             if (appointment == null)
                 return NotFound("Appointment not found.");
 
-            // Ensure therapist owns this appointment
-            if (appointment.ProfessionalId != professional.ProfessionalId)
+            if (appointment.ProfessionalId != professional.Id)
                 return Forbid("You cannot confirm this appointment.");
 
-            // Ensure valid status
-            if (appointment.Status != AppointmentStatus.PENDING)
-                return BadRequest("Only pending appointments can be confirmed.");
+            if (appointment.Status != AppointmentStatus.BOOKED)
+                return BadRequest("Only booked appointments can be confirmed.");
 
-            // Generate Jitsi room
             appointment.Status = AppointmentStatus.CONFIRMED;
-            appointment.JitsiRoomId =
-                $"safemind-{appointment.AppointmentId}-{Guid.NewGuid()}";
-
             await _context.SaveChangesAsync();
 
             return Ok(new
             {
                 message = "Appointment confirmed successfully.",
-                appointmentId = appointment.AppointmentId,
-                jitsiRoomId = appointment.JitsiRoomId
+                appointmentId = appointment.Id
             });
         }
-
-
-
     }
 }
-
