@@ -43,33 +43,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -81,33 +55,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -319,6 +267,29 @@
         }
       }
     },
+    "/api/video-sessions/{appointmentId}": {
+      "post": {
+        "tags": [
+          "VideoSession"
+        ],
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -361,53 +332,6 @@
   },
   "components": {
     "schemas": {
-      "AppointmentResponseDto": {
-        "type": "object",
-        "properties": {
-          "appointmentId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "appointmentDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "appointmentTime": {
-            "type": "string",
-            "format": "time"
-          },
-          "status": {
-            "$ref": "#/components/schemas/AppointmentStatus"
-          },
-          "jitsiRoomId": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "professionalName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "AppointmentStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "CreateAppointmentDto": {
         "type": "object",
         "properties": {
@@ -415,13 +339,14 @@
             "type": "integer",
             "format": "int64"
           },
-          "appointmentDate": {
+          "startTime": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
-          "appointmentTime": {
+          "endTime": {
             "type": "string",
-            "format": "time"
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false

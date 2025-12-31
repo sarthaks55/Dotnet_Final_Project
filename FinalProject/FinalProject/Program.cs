@@ -1,4 +1,5 @@
 using FinalProject.Data;
+using FinalProject.Interfaces;
 using FinalProject.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // ==========================
 builder.Services.AddScoped<IEncryptionService, AesEncryptionService>();
 
+
+// Video Session 
+builder.Services.AddScoped<IVideoSessionService, VideoSessionService>();
 
 
 // ==========================
