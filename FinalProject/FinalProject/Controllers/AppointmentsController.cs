@@ -20,9 +20,9 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-       
+        // ===================================================
         // USER: Book appointment
-       
+        // ===================================================
         [HttpPost("book")]
         [Authorize(Roles = "USER")]
         public async Task<IActionResult> BookAppointment(
@@ -75,15 +75,9 @@ namespace FinalProject.Controllers
             });
         }
 
-<<<<<<< HEAD
-       
-        // USER: View his own appointments
-       
-=======
         // ===================================================
         // USER: View own appointments
         // ===================================================
->>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpGet("my")]
         [Authorize(Roles = "USER")]
         public async Task<IActionResult> GetMyAppointments()
@@ -111,15 +105,9 @@ namespace FinalProject.Controllers
             return Ok(appointments);
         }
 
-<<<<<<< HEAD
-       
-        // PROFESSIONAL: View own appointments
-       
-=======
         // ===================================================
         // PROFESSIONAL: View own appointments
         // ===================================================
->>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpGet("professional")]
         [Authorize(Roles = "PROFESSIONAL")]
         public async Task<IActionResult> GetProfessionalAppointments()
@@ -157,18 +145,9 @@ namespace FinalProject.Controllers
             return Ok(appointments);
         }
 
-<<<<<<< HEAD
-
-
-
-       
-        // PROFESSIONAL: Confirm appointment
-       
-=======
         // ===================================================
         // PROFESSIONAL: Confirm appointment
         // ===================================================
->>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         [HttpPut("{appointmentId}/confirm")]
         [Authorize(Roles = "PROFESSIONAL")]
         public async Task<IActionResult> ConfirmAppointment(long appointmentId)

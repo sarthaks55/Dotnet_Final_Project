@@ -25,9 +25,9 @@ namespace FinalProject.Controllers
             _encryption = encryption;
         }
 
-        
+        // =====================================
         // USER: Add diary entry
-        
+        // =====================================
         [HttpPost]
         public async Task<IActionResult> AddEntry(CreateDiaryEntryDto dto)
         {
@@ -49,9 +49,9 @@ namespace FinalProject.Controllers
             return Ok("Diary entry saved securely.");
         }
 
-        
+        // =====================================
         // USER: Get all diary entries
-        
+        // =====================================
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DiaryEntryResponseDto>>> GetEntries()
         {

@@ -20,9 +20,9 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        
+        // ======================================
         // USER: Add today's mood
-        
+        // ======================================
         [HttpPost]
         public async Task<IActionResult> AddMood(CreateMoodEntryDto dto)
         {
@@ -52,9 +52,9 @@ namespace FinalProject.Controllers
             return Ok("Mood entry saved.");
         }
 
-        
+        // ======================================
         // USER: Get mood history (date range)
-        
+        // ======================================
         //[HttpGet("history")]
         //public async Task<ActionResult<IEnumerable<MoodEntryResponseDto>>> GetMoodHistory(
         //    [FromQuery] DateOnly from,
@@ -81,9 +81,9 @@ namespace FinalProject.Controllers
         //    return Ok(moods);
         //}
 
-        
+        // ======================================
         // USER: Weekly analytics
-        
+        // ======================================
         [HttpGet("weekly")]
         public async Task<IActionResult> GetWeeklyMood()
         {
@@ -107,9 +107,9 @@ namespace FinalProject.Controllers
             return Ok(data);
         }
 
-        
+        // ======================================
         // USER: Monthly analytics
-        
+        // ======================================
         [HttpGet("monthly")]
         public async Task<IActionResult> GetMonthlyMood()
         {

@@ -18,9 +18,6 @@ namespace FinalProject.Data
         public DbSet<VideoSession> VideoSessions => Set<VideoSession>();
         public DbSet<MoodEntry> MoodEntries => Set<MoodEntry>();
         public DbSet<DiaryEntry> DiaryEntries => Set<DiaryEntry>();
-        public DbSet<Language> Languages => Set<Language>();
-        public DbSet<ProfessionalLanguage> ProfessionalLanguages => Set<ProfessionalLanguage>();
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -102,8 +99,9 @@ namespace FinalProject.Data
                 entity.Property(p => p.IsVerified)
                       .HasDefaultValue(false);
 
-                entity.Property(p => p.Gender)
-                      .HasConversion<string>();
+                entity.Property(p => p.CreatedAt)
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("CURRENT_TIMESTAMP");
             });
 
             // ==========================
@@ -207,46 +205,6 @@ namespace FinalProject.Data
                       .HasForeignKey(d => d.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
-<<<<<<< HEAD
-
-
-            // ==========================
-            // Language
-            // ==========================
-            modelBuilder.Entity<Language>(entity =>
-            {
-                entity.HasKey(l => l.LanguageId);
-
-                entity.HasIndex(l => l.LanguageName)
-                      .IsUnique();
-
-                entity.Property(l => l.LanguageName)
-                      .HasMaxLength(50)
-                      .IsRequired();
-            });
-
-
-
-            // ==========================
-            // ProfessionalLanguage (M:N)
-            // ==========================
-            modelBuilder.Entity<ProfessionalLanguage>(entity =>
-            {
-                entity.HasKey(pl => new { pl.ProfessionalId, pl.LanguageId });
-
-                entity.HasOne(pl => pl.Professional)
-                      .WithMany(p => p.ProfessionalLanguages)
-                      .HasForeignKey(pl => pl.ProfessionalId)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(pl => pl.Language)
-                      .WithMany(l => l.ProfessionalLanguages)
-                      .HasForeignKey(pl => pl.LanguageId)
-                      .OnDelete(DeleteBehavior.Cascade);
-            });
-
-=======
->>>>>>> eb5cf63ec420917b9f97ab9a7348557e759502e6
         }
     }
 }
