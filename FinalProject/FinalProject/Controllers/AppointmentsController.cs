@@ -1,14 +1,16 @@
-﻿using FinalProject.Data;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using FinalProject.Data;
 using FinalProject.DTO;
 using FinalProject.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Controllers
 {
     [ApiController]
     [Route("api/appointments")]
+    [Authorize]
     public class AppointmentsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -18,27 +20,38 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        // ============================
+        // ===================================================
         // USER: Book appointment
-        // ============================
-        [HttpPost("book/{userId}")]
+        // ===================================================
+        [HttpPost("book")]
+        [Authorize(Roles = "USER")]
         public async Task<IActionResult> BookAppointment(
-            long userId,
             [FromBody] CreateAppointmentDto dto)
         {
-            // Check professional exists
-            var professionalExists = await _context.Professionals
-                .AnyAsync(p => p.ProfessionalId == dto.ProfessionalId && p.IsVerified);
+            var userId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
+            );
 
-            if (!professionalExists)
+            // Check professional exists & verified
+            var professional = await _context.Professionals
+                .FirstOrDefaultAsync(p =>
+                    p.Id == dto.ProfessionalId &&
+                    p.IsVerified
+                );
+
+            if (professional == null)
                 return BadRequest("Professional not found or not verified.");
 
-            // Prevent double booking
+            // Prevent booking in the past
+            if (dto.StartTime < DateTime.UtcNow)
+                return BadRequest("Cannot book appointment in the past.");
+
+            // Prevent double booking (same professional + same start time)
             bool slotTaken = await _context.Appointments.AnyAsync(a =>
                 a.ProfessionalId == dto.ProfessionalId &&
-                a.AppointmentDate == dto.AppointmentDate &&
-                a.AppointmentTime == dto.AppointmentTime &&
-                a.Status != AppointmentStatus.CANCELLED);
+                a.StartTime == dto.StartTime &&
+                a.Status != AppointmentStatus.CANCELLED
+            );
 
             if (slotTaken)
                 return Conflict("This time slot is already booked.");
@@ -47,9 +60,9 @@ namespace FinalProject.Controllers
             {
                 UserId = userId,
                 ProfessionalId = dto.ProfessionalId,
-                AppointmentDate = dto.AppointmentDate,
-                AppointmentTime = dto.AppointmentTime,
-                Status = AppointmentStatus.PENDING
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime,
+                Status = AppointmentStatus.BOOKED
             };
 
             _context.Appointments.Add(appointment);
@@ -58,55 +71,120 @@ namespace FinalProject.Controllers
             return Ok(new
             {
                 message = "Appointment booked successfully",
-                appointmentId = appointment.AppointmentId
+                appointmentId = appointment.Id
             });
         }
 
-        // ============================
-        // USER: View his appointments
-        // ============================
-        [HttpGet("user/{userId}")]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetUserAppointments(long userId)
+        // ===================================================
+        // USER: View own appointments
+        // ===================================================
+        [HttpGet("my")]
+        [Authorize(Roles = "USER")]
+        public async Task<IActionResult> GetMyAppointments()
         {
+            var userId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
+            );
+
             var appointments = await _context.Appointments
                 .Where(a => a.UserId == userId)
-                .OrderByDescending(a => a.AppointmentDate)
-                .Select(a => new AppointmentResponseDto
+                .Include(a => a.Professional)
+                    .ThenInclude(p => p.User)
+                .OrderByDescending(a => a.StartTime)
+                .Select(a => new
                 {
-                    AppointmentId = a.AppointmentId,
-                    AppointmentDate = a.AppointmentDate,
-                    AppointmentTime = a.AppointmentTime,
-                    Status = a.Status,
-                    JitsiRoomId = a.JitsiRoomId,
-                    CreatedAt = a.CreatedAt
+                    a.Id,
+                    a.StartTime,
+                    a.EndTime,
+                    Status = a.Status.ToString(),
+                    a.CreatedAt,
+                    ProfessionalName = a.Professional.User.FullName
                 })
                 .ToListAsync();
 
             return Ok(appointments);
         }
 
-        // ============================
-        // PROFESSIONAL: View his appointments
-        // ============================
-        [HttpGet("professional/{professionalId}")]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetProfessionalAppointments(long professionalId)
+        // ===================================================
+        // PROFESSIONAL: View own appointments
+        // ===================================================
+        [HttpGet("professional")]
+        [Authorize(Roles = "PROFESSIONAL")]
+        public async Task<IActionResult> GetProfessionalAppointments()
         {
+            var userId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
+            );
+            Console.WriteLine("User ID: " + userId);
+            var professionalId = await _context.Professionals
+                .Where(p => p.UserId == userId)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
+            Console.WriteLine("Professional ID: " + professionalId);
+            var professional = await _context.Professionals
+                .FirstOrDefaultAsync(p => p.Id == professionalId);
+
+            if (professional == null)
+                return Unauthorized("Professional profile not found.");
+
             var appointments = await _context.Appointments
-                .Where(a => a.ProfessionalId == professionalId)
-                .OrderBy(a => a.AppointmentDate)
-                .ThenBy(a => a.AppointmentTime)
-                .Select(a => new AppointmentResponseDto
+                .Where(a => a.ProfessionalId == professional.Id)
+                .Include(a => a.User)
+                .OrderBy(a => a.StartTime)
+                .Select(a => new
                 {
-                    AppointmentId = a.AppointmentId,
-                    AppointmentDate = a.AppointmentDate,
-                    AppointmentTime = a.AppointmentTime,
-                    Status = a.Status,
-                    JitsiRoomId = a.JitsiRoomId,
-                    CreatedAt = a.CreatedAt
+                    a.Id,
+                    a.StartTime,
+                    a.EndTime,
+                    Status = a.Status.ToString(),
+                    a.CreatedAt,
+                    UserName = a.User.FullName
                 })
                 .ToListAsync();
 
             return Ok(appointments);
+        }
+
+        // ===================================================
+        // PROFESSIONAL: Confirm appointment
+        // ===================================================
+        [HttpPut("{appointmentId}/confirm")]
+        [Authorize(Roles = "PROFESSIONAL")]
+        public async Task<IActionResult> ConfirmAppointment(long appointmentId)
+        {
+            var professionalUserId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
+            );
+            var professionalId = await _context.Professionals
+                .Where(p => p.UserId == professionalUserId)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
+            var professional = await _context.Professionals
+                .FirstOrDefaultAsync(p => p.Id == professionalId);
+
+            if (professional == null)
+                return Unauthorized("Professional profile not found.");
+
+            var appointment = await _context.Appointments
+                .FirstOrDefaultAsync(a => a.Id == appointmentId);
+
+            if (appointment == null)
+                return NotFound("Appointment not found.");
+
+            if (appointment.ProfessionalId != professional.Id)
+                return Forbid("You cannot confirm this appointment.");
+
+            if (appointment.Status != AppointmentStatus.BOOKED)
+                return BadRequest("Only booked appointments can be confirmed.");
+
+            appointment.Status = AppointmentStatus.CONFIRMED;
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Appointment confirmed successfully.",
+                appointmentId = appointment.Id
+            });
         }
     }
 }

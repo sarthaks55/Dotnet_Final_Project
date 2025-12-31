@@ -4,12 +4,18 @@ namespace FinalProject.DTO
 {
     public class AppointmentResponseDto
     {
-        public long AppointmentId { get; set; }
-        public DateOnly AppointmentDate { get; set; }
-        public TimeOnly AppointmentTime { get; set; }
-        public AppointmentStatus Status { get; set; }
-        public string? JitsiRoomId { get; set; }
-        public DateTime CreatedAt { get; set; }
-    }
+        public long Id { get; set; }
 
+        public DateTime StartTime { get; set; }
+
+        public DateTime? EndTime { get; set; }
+
+        public AppointmentStatus Status { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        // Optional display fields
+        public string? UserName { get; set; }
+        public string? ProfessionalName { get; set; }
+    }
 }

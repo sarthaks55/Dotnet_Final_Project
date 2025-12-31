@@ -5,21 +5,10 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/appointments/book/{userId}": {
+    "/api/appointments/book": {
       "post": {
         "tags": [
           "Appointments"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
         ],
         "requestBody": {
           "content": {
@@ -47,14 +36,38 @@
         }
       }
     },
-    "/api/appointments/user/{userId}": {
+    "/api/appointments/my": {
       "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/appointments/professional": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/appointments/{appointmentId}/confirm": {
+      "put": {
         "tags": [
           "Appointments"
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "appointmentId",
             "in": "path",
             "required": true,
             "schema": {
@@ -65,13 +78,116 @@
         ],
         "responses": {
           "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/diary": {
+      "post": {
+        "tags": [
+          "DiaryEntries"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDiaryEntryDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDiaryEntryDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDiaryEntryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DiaryEntries"
+        ],
+        "responses": {
+          "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                    "$ref": "#/components/schemas/DiaryEntryResponseDto"
                   }
                 }
               },
@@ -79,7 +195,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                    "$ref": "#/components/schemas/DiaryEntryResponseDto"
                   }
                 }
               },
@@ -87,7 +203,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                    "$ref": "#/components/schemas/DiaryEntryResponseDto"
                   }
                 }
               }
@@ -96,51 +212,80 @@
         }
       }
     },
-    "/api/appointments/professional/{professionalId}": {
+    "/api/mood": {
+      "post": {
+        "tags": [
+          "MoodEntries"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMoodEntryDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMoodEntryDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMoodEntryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/mood/weekly": {
       "get": {
         "tags": [
-          "Appointments"
+          "MoodEntries"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/mood/monthly": {
+      "get": {
+        "tags": [
+          "MoodEntries"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/video-sessions/{appointmentId}": {
+      "post": {
+        "tags": [
+          "VideoSession"
         ],
         "parameters": [
           {
-            "name": "professionalId",
+            "name": "appointmentId",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int64"
+              "format": "int32"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppointmentResponseDto"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -187,25 +332,57 @@
   },
   "components": {
     "schemas": {
-      "AppointmentResponseDto": {
+      "CreateAppointmentDto": {
         "type": "object",
         "properties": {
-          "appointmentId": {
+          "professionalId": {
             "type": "integer",
             "format": "int64"
           },
-          "appointmentDate": {
+          "startTime": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
-          "appointmentTime": {
+          "endTime": {
             "type": "string",
-            "format": "time"
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateDiaryEntryDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMoodEntryDto": {
+        "type": "object",
+        "properties": {
+          "moodValue": {
+            "type": "integer",
+            "format": "int32"
           },
-          "status": {
-            "$ref": "#/components/schemas/AppointmentStatus"
+          "notes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiaryEntryResponseDto": {
+        "type": "object",
+        "properties": {
+          "diaryId": {
+            "type": "integer",
+            "format": "int64"
           },
-          "jitsiRoomId": {
+          "text": {
             "type": "string",
             "nullable": true
           },
@@ -216,30 +393,42 @@
         },
         "additionalProperties": false
       },
-      "AppointmentStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "CreateAppointmentDto": {
+      "LoginDto": {
         "type": "object",
         "properties": {
-          "professionalId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "appointmentDate": {
+          "email": {
             "type": "string",
-            "format": "date"
+            "nullable": true
           },
-          "appointmentTime": {
+          "password": {
             "type": "string",
-            "format": "time"
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -267,6 +456,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter: Bearer {your JWT token}",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

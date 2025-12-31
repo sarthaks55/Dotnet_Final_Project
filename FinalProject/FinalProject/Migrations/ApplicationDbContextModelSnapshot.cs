@@ -21,18 +21,23 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Appointment", b =>
                 {
-                    b.Property<long>("AppointmentId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasColumnName("appointment_id");
 
-                    b.Property<DateOnly>("AppointmentDate")
-                        .HasColumnType("date")
-                        .HasColumnName("appointment_date");
+                    b.Property<DateTime?>("CallEndedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("call_endedAt");
 
-                    b.Property<TimeOnly>("AppointmentTime")
-                        .HasColumnType("time(6)")
-                        .HasColumnName("appointment_time");
+                    b.Property<DateTime?>("CallStartedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("call_startAt");
+
+                    b.Property<string>("CancellationReason")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)")
+                        .HasColumnName("cancellation_reason");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -40,40 +45,105 @@ namespace FinalProject.Migrations
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("JitsiRoomId")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("jitsi_room_id");
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("end_time");
 
                     b.Property<long>("ProfessionalId")
                         .HasColumnType("bigint")
                         .HasColumnName("professional_id");
 
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("start_time");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("longtext")
-                        .HasDefaultValue("PENDING")
+                        .HasDefaultValue("BOOKED")
                         .HasColumnName("status");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint")
                         .HasColumnName("user_id");
 
-                    b.HasKey("AppointmentId");
-
-                    b.HasIndex("ProfessionalId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ProfessionalId", "StartTime")
+                        .IsUnique();
 
                     b.ToTable("appointments");
                 });
 
+            modelBuilder.Entity("FinalProject.Models.DiaryEntry", b =>
+                {
+                    b.Property<long>("DiaryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("diary_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("EncryptedText")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("encrypted_text");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("DiaryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("diary_entries");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.MoodEntry", b =>
+                {
+                    b.Property<long>("MoodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("mood_id");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("created_date");
+
+                    b.Property<int>("MoodValue")
+                        .HasColumnType("int")
+                        .HasColumnName("mood_value");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("longtext")
+                        .HasColumnName("notes");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("MoodId");
+
+                    b.HasIndex("UserId", "CreatedDate")
+                        .IsUnique();
+
+                    b.ToTable("mood_entries");
+                });
+
             modelBuilder.Entity("FinalProject.Models.Professional", b =>
                 {
-                    b.Property<long>("ProfessionalId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("professional_id");
+                        .HasColumnName("id");
 
                     b.Property<string>("Bio")
                         .HasColumnType("longtext")
@@ -84,12 +154,20 @@ namespace FinalProject.Migrations
                         .HasColumnType("decimal(10,2)")
                         .HasColumnName("consultation_fee");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                     b.Property<int?>("ExperienceYears")
                         .HasColumnType("int")
                         .HasColumnName("experience_years");
 
                     b.Property<bool>("IsVerified")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
                         .HasColumnName("is_verified");
 
                     b.Property<string>("Qualification")
@@ -102,7 +180,14 @@ namespace FinalProject.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("specialization");
 
-                    b.HasKey("ProfessionalId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("professionals");
                 });
@@ -174,6 +259,10 @@ namespace FinalProject.Migrations
                         .HasColumnType("int")
                         .HasColumnName("role_id");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("updated_at");
+
                     b.HasKey("UserId");
 
                     b.HasIndex("Email")
@@ -182,6 +271,53 @@ namespace FinalProject.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.VideoSession", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("AllowedFrom")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("allowed_from");
+
+                    b.Property<DateTime>("AllowedUntil")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("allowed_until");
+
+                    b.Property<long>("AppointmentId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("appointment_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<bool>("PatientJoined")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("patient_joined");
+
+                    b.Property<bool>("ProfessionalJoined")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("professional_joined");
+
+                    b.Property<string>("RoomToken")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("room_token");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId")
+                        .IsUnique();
+
+                    b.ToTable("video_sessions");
                 });
 
             modelBuilder.Entity("FinalProject.Models.Appointment", b =>
@@ -203,11 +339,33 @@ namespace FinalProject.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FinalProject.Models.DiaryEntry", b =>
+                {
+                    b.HasOne("FinalProject.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.MoodEntry", b =>
+                {
+                    b.HasOne("FinalProject.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FinalProject.Models.Professional", b =>
                 {
                     b.HasOne("FinalProject.Models.User", "User")
                         .WithOne("Professional")
-                        .HasForeignKey("FinalProject.Models.Professional", "ProfessionalId")
+                        .HasForeignKey("FinalProject.Models.Professional", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -223,6 +381,22 @@ namespace FinalProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.VideoSession", b =>
+                {
+                    b.HasOne("FinalProject.Models.Appointment", "Appointment")
+                        .WithOne("VideoSession")
+                        .HasForeignKey("FinalProject.Models.VideoSession", "AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+                });
+
+            modelBuilder.Entity("FinalProject.Models.Appointment", b =>
+                {
+                    b.Navigation("VideoSession");
                 });
 
             modelBuilder.Entity("FinalProject.Models.Professional", b =>

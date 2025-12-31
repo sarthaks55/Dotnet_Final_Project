@@ -1,17 +1,28 @@
 [
   {
     "ContainingType": "FinalProject.Controllers.AppointmentsController",
-    "Method": "BookAppointment",
-    "RelativePath": "api/appointments/book/{userId}",
-    "HttpMethod": "POST",
+    "Method": "ConfirmAppointment",
+    "RelativePath": "api/appointments/{appointmentId}/confirm",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "appointmentId",
         "Type": "System.Int64",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.AppointmentsController",
+    "Method": "BookAppointment",
+    "RelativePath": "api/appointments/book",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "dto",
         "Type": "FinalProject.DTO.CreateAppointmentDto",
@@ -22,21 +33,83 @@
   },
   {
     "ContainingType": "FinalProject.Controllers.AppointmentsController",
-    "Method": "GetProfessionalAppointments",
-    "RelativePath": "api/appointments/professional/{professionalId}",
+    "Method": "GetMyAppointments",
+    "RelativePath": "api/appointments/my",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.AppointmentsController",
+    "Method": "GetProfessionalAppointments",
+    "RelativePath": "api/appointments/professional",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "professionalId",
-        "Type": "System.Int64",
+        "Name": "dto",
+        "Type": "FinalProject.DTO.LoginDto",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FinalProject.DTO.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.DiaryEntriesController",
+    "Method": "AddEntry",
+    "RelativePath": "api/diary",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FinalProject.DTO.CreateDiaryEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.DiaryEntriesController",
+    "Method": "GetEntries",
+    "RelativePath": "api/diary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject.DTO.AppointmentResponseDto, FinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject.DTO.DiaryEntryResponseDto, FinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -47,30 +120,56 @@
     ]
   },
   {
-    "ContainingType": "FinalProject.Controllers.AppointmentsController",
-    "Method": "GetUserAppointments",
-    "RelativePath": "api/appointments/user/{userId}",
-    "HttpMethod": "GET",
+    "ContainingType": "FinalProject.Controllers.MoodEntriesController",
+    "Method": "AddMood",
+    "RelativePath": "api/mood",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int64",
+        "Name": "dto",
+        "Type": "FinalProject.DTO.CreateMoodEntryDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.MoodEntriesController",
+    "Method": "GetMonthlyMood",
+    "RelativePath": "api/mood/monthly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.MoodEntriesController",
+    "Method": "GetWeeklyMood",
+    "RelativePath": "api/mood/weekly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.VideoSessionController",
+    "Method": "Create",
+    "RelativePath": "api/video-sessions/{appointmentId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject.DTO.AppointmentResponseDto, FinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FinalProject.Controllers.WeatherForecastController",
