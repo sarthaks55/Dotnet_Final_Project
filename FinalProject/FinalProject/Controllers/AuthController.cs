@@ -92,6 +92,99 @@ namespace FinalProject.Controllers
             });
         }
 
+
+
+
+        // ==========================
+        // PROFESSIONAL REGISTER
+        // ==========================
+        [HttpPost("register-professional")]
+        public async Task<IActionResult> RegisterProfessional(RegisterProfessionalDto dto)
+        {
+            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
+                return BadRequest("Email already registered.");
+
+            var role = await _context.Roles
+                .FirstOrDefaultAsync(r => r.RoleName == "PROFESSIONAL");
+
+            if (role == null)
+                return BadRequest("Professional role not found.");
+
+            // Validate languages
+            var languages = await _context.Languages
+                .Where(l => dto.LanguageIds.Contains(l.LanguageId))
+                .ToListAsync();
+
+            if (languages.Count != dto.LanguageIds.Count)
+                return BadRequest("One or more languages are invalid.");
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // 🔐 Hash password
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(
+                    dto.Password,
+                    workFactor: 12
+                );
+
+                // 👤 Create User
+                var user = new User
+                {
+                    FullName = dto.FullName,
+                    Email = dto.Email,
+                    Phone = dto.Phone,
+                    RoleId = role.RoleId,
+                    PasswordHash = hashedPassword
+                };
+
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                // 🧑‍⚕️ Create Professional
+                var professional = new Professional
+                {
+                    Id = user.UserId, // 1-to-1 mapping
+                    UserId = user.UserId,
+                    Specialization = dto.Specialization,
+                    Gender = dto.Gender,
+                    ExperienceYears = dto.ExperienceYears,
+                    Qualification = dto.Qualification,
+                    Bio = dto.Bio,
+                    ConsultationFee = dto.ConsultationFee,
+                    IsVerified = false // Admin approval required
+                };
+
+                _context.Professionals.Add(professional);
+                await _context.SaveChangesAsync();
+
+                // 🌐 Map Languages
+                var professionalLanguages = languages.Select(l => new ProfessionalLanguage
+                {
+                    ProfessionalId = professional.Id,
+                    LanguageId = l.LanguageId
+                });
+
+                _context.ProfessionalLanguages.AddRange(professionalLanguages);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return Ok("Professional registered successfully. Verification pending.");
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+
+
+
+
+
+
         // ==========================
         // JWT GENERATION
         // ==========================
