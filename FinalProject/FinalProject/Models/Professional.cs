@@ -19,6 +19,9 @@ namespace FinalProject.Models
         [Column("specialization")]
         public ProfessionalSpecialization Specialization { get; set; }
 
+        [Column("gender")]
+        public Gender? Gender { get; set; }
+
         [Column("experience_years")]
         public int? ExperienceYears { get; set; }
 
@@ -35,11 +38,13 @@ namespace FinalProject.Models
         [Column("is_verified")]
         public bool IsVerified { get; set; } = false;
 
-        [Column("created_at", TypeName = "timestamp")]
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation
         public User User { get; set; } = null!;
         public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+
+        // NEW
+        public ICollection<ProfessionalLanguage> ProfessionalLanguages { get; set; }
+            = new List<ProfessionalLanguage>();
     }
 }

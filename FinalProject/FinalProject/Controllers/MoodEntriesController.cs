@@ -52,39 +52,39 @@ namespace FinalProject.Controllers
             return Ok("Mood entry saved.");
         }
 
-        // ======================================
-        // USER: Get mood history (date range)
-        // ======================================
-        //[HttpGet("history")]
-        //public async Task<ActionResult<IEnumerable<MoodEntryResponseDto>>> GetMoodHistory(
-        //    [FromQuery] DateOnly from,
-        //    [FromQuery] DateOnly to)
-        //{
-        //    var userId = long.Parse(
-        //        User.FindFirst(ClaimTypes.NameIdentifier)!.Value
-        //    );
+         //======================================
+        // USER: Get mood history(date range)
+         //======================================
+        [HttpGet("history")]
+        public async Task<ActionResult<IEnumerable<MoodEntryResponseDto>>> GetMoodHistory(
+            [FromQuery] DateOnly from,
+            [FromQuery] DateOnly to)
+        {
+            var userId = long.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value
+            );
 
-        //    var moods = await _context.MoodEntries
-        //        .Where(m => m.UserId == userId &&
-        //                    m.CreatedDate >= from &&
-        //                    m.CreatedDate <= to)
-        //        .OrderBy(m => m.CreatedDate)
-        //        .Select(m => new MoodEntryResponseDto
-        //        {
-        //            MoodId = m.MoodId,
-        //            MoodValue = m.MoodValue,
-        //            Notes = m.Notes,
-        //            CreatedDate = m.CreatedDate
-        //        })
-        //        .ToListAsync();
+            var moods = await _context.MoodEntries
+                .Where(m => m.UserId == userId &&
+                            m.CreatedDate >= from &&
+                            m.CreatedDate <= to)
+                .OrderBy(m => m.CreatedDate)
+                .Select(m => new MoodEntryResponseDto
+                {
+                    MoodId = m.MoodId,
+                    MoodValue = m.MoodValue,
+                    Notes = m.Notes,
+                    CreatedDate = m.CreatedDate
+                })
+                .ToListAsync();
 
-        //    return Ok(moods);
-        //}
+            return Ok(moods);
+            }
 
-        // ======================================
-        // USER: Weekly analytics
-        // ======================================
-        [HttpGet("weekly")]
+            // ======================================
+            // USER: Weekly analytics
+            // ======================================
+            [HttpGet("weekly")]
         public async Task<IActionResult> GetWeeklyMood()
         {
             var userId = long.Parse(

@@ -19,6 +19,24 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         )
     )
 );
+// ==========================
+// CORS
+// ==========================
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SafeMindCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "http://localhost:4200"
+            ) // <-- your frontend URLs
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 
 // ==========================
@@ -60,9 +78,28 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+// Configure JWT for SignalR
+builder.Services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Query["access_token"];
+            var path = context.HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/videohub"))
+            {
+                context.Token = accessToken;
+            }
+            return Task.CompletedTask;
+        }
+    };
+});
 
 // ==========================
 builder.Services.AddAuthorization();
+builder.Services.AddSignalR();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -103,9 +140,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("SafeMindCors");
 app.UseAuthentication();  
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<FinalProject.Hubs.VideoSignalHub>("/videohub");
 app.Run();
