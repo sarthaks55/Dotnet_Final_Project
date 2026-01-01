@@ -35,7 +35,7 @@ namespace FinalProject.Controllers
             var user = await _context.Users.FindAsync(userId);
             var professional = await _context.Professionals
                 .Include(p => p.ProfessionalLanguages)
-                .FirstOrDefaultAsync(p => p.ProfessionalId == userId);
+                .FirstOrDefaultAsync(p => p.Id == userId);
 
             if (user == null || professional == null)
                 return NotFound();
@@ -138,7 +138,7 @@ namespace FinalProject.Controllers
 
             var appointment = await _context.Appointments
                 .FirstOrDefaultAsync(a =>
-                    a.AppointmentId == appointmentId &&
+                    a.Id == appointmentId &&
                     a.ProfessionalId == professionalId);
 
             if (appointment == null)

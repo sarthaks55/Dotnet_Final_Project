@@ -179,7 +179,7 @@ namespace FinalProject.Controllers
             var userId = GetUserId();
             var appointment = await _context.Appointments
                 .FirstOrDefaultAsync(a =>
-                    a.AppointmentId == appointmentId &&
+                    a.Id == appointmentId &&
                     a.UserId == userId);
 
             if (appointment == null)
