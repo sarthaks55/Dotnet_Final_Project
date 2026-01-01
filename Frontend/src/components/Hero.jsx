@@ -1,6 +1,9 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="hero-section" style={{paddingTop: '80px'}}>
       <Container>
@@ -14,8 +17,25 @@ const Hero = () => {
               Connect with licensed therapists and mental health professionals. Get personalized support when you need it most.
             </p>
             <div className="d-flex flex-column flex-sm-row gap-3 mb-4">
-              <Button className="btn-primary-custom">Book a session</Button>
-              <Button className="btn-outline-custom">Learn more</Button>
+              <Button 
+                className="btn-primary-custom"
+                onClick={() => navigate('/signup')}
+              >
+                Get Started
+              </Button>
+              <Button 
+                className="btn-outline-custom"
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </Button>
+              <Button 
+                className="btn-outline-custom"
+                onClick={() => navigate('/professional-login')}
+              >
+                <i className="fas fa-user-md me-2"></i>
+                Professional Login
+              </Button>
             </div>
             <div className="d-flex align-items-center gap-4 text-muted-custom">
               <div className="d-flex align-items-center">
