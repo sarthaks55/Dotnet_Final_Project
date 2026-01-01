@@ -8,8 +8,8 @@ import ProfessionalLogin from './components/ProfessionalLogin'
 import ProfessionalSignup from './components/ProfessionalSignup'
 import ProtectedRoute from './components/ProtectedRoute'
 import Footer from './components/Footer'
-import { UserDashboard } from './component/UserDashBoardcomponent'
-import { ProfessionalDashboard } from './component/ProfessionalDashboardcomponent'
+import { UserDashboard } from './components/UserDashBoardcomponent'
+import { ProfessionalDashboard } from './components/ProfessionalDashboardcomponent'
 
 function App() {
   return (
